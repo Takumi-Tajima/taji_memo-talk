@@ -54,8 +54,7 @@ Rails.application.configure do
   config.active_record.migration_error = :page_load
 
   # Highlight code that triggered database queries in logs.
-  config.active_record.verbose_query_logs = true
-
+  config.active_record.verbose_query_logs = true 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
@@ -67,4 +66,5 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  config.hosts.clear
 end
