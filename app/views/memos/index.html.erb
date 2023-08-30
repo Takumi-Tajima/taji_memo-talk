@@ -9,3 +9,5 @@
 <% end %>
 
 <%= link_to 'メモ新規追加', new_memo_path%>
+
+<%= button_to 'Log out', destroy_user_session_path, method: :delete%>

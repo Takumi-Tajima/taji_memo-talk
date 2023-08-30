@@ -16,7 +16,7 @@ class MemosController < ApplicationController
   
   def create
     @memo = current_user.memos.new(memo_params)
-    if @memo.save!
+    if @memo.save
       redirect_to memo_path(@memo) # 作成したメモの詳細画面へredirect
     else
       render :new, status: :unprocessable_entity
