@@ -1,0 +1,5 @@
+<%= @memo.title%>
+<%= @memo.description%>
+<%= link_to '編集', edit_memo_path(@memo)%>
+<%= button_to '削除', memo_path(@memo), method: :delete%>
+<%= link_to "戻る", memos_path %>

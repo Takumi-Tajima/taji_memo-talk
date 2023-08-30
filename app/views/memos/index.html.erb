@@ -1,0 +1,13 @@
+<h1>メモ一覧</h1>
+
+<% if @memos.present? %>
+　<% @memos.each do |memo| %>
+　  <%= link_to memo.title, memo_path(memo)%>
+  <% end %>
+<% else %>
+  メモを追加しましょう！
+<% end %>
+
+<%= link_to 'メモ新規追加', new_memo_path%>
+
+<%= button_to 'Log out', destroy_user_session_path, method: :delete%>

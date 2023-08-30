@@ -1,11 +1,29 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {
+    
+  get 'questions/new'
+  get 'questions/index'
+  get 'questions/edit'
+  get 'questions/show'
+  post 'questions/create'
+  patch 'questions/update'
+  delete 'questions/destroy'
+  get "questions/mypost"
+ 
+  
+   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     passwords:'users/passwords'
   }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
-  # Defines the root path route ("/")
-  # root "articles#index"
+#   resources :questions do
+#     collection do
+#       get "mypost", to: "questions#mypost"
+#     end
+#   end
+
+# indexを入力するとshowのビューが表示される
+  
+  resources :memos
+  root "memos#index"
 end
