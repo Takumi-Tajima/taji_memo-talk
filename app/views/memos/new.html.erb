@@ -1,2 +1,4 @@
-<h1>Memos#new</h1>
-<p>Find me in app/views/memos/new.html.erb</p>
+<h1>メモ新規登録</h1>
+
+<%= render 'form', url: memos_path(@memo) %>
+<%= link_to "戻る", memos_path %>
