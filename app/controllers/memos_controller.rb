@@ -8,18 +8,18 @@ class MemosController < ApplicationController
   end
   
   def new
-    @memo = Memo.new
+    @memo = current_user.memos.new
   end
   
   def show
   end
   
   def create
-    @memo = Memo.new(memo_params)
-    if @memo.save
+    @memo = current_user.memos.new(memo_params)
+    if @memo.save!
       redirect_to memo_path(@memo) # 作成したメモの詳細画面へredirect
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
   
@@ -30,7 +30,7 @@ class MemosController < ApplicationController
     if @memo.update(memo_params)
       redirect_to memo_path(@memo) # 更新したメモの詳細画面へredirect
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
   
@@ -43,7 +43,7 @@ class MemosController < ApplicationController
   
     # current_user の設定
     def set_memo
-      @memo = current_user.memo.find(params[:id])
+      @memo = current_user.memos.find(params[:id])
     end
     
     def memo_params

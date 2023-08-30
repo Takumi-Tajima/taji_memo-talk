@@ -1,0 +1,5 @@
+<%= simple_form_for(@memo, url: url) do |f| %>
+  <%= f.input :title%>
+  <%= f.input :description, as: :text%>
+  <%= f.button :submit, '保存する'%>
+<% end %>

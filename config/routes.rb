@@ -1,16 +1,10 @@
 Rails.application.routes.draw do
-  
-  # memosコントローラーのアクション
-  
-  resources :memos
-  
    devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     passwords:'users/passwords'
   }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  
+  resources :memos
+  root "memos#index"
 end
