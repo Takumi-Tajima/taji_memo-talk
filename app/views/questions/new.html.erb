@@ -2,8 +2,8 @@
   <h2 class="mb-5">掲示板に質問する</h2>
 
   <%= simple_form_for @question do |f| %>
-    <%= f.input :title %>
-    <%= f.input :description, input_html: { rows: 18 } %>
+    <%= f.input :title, required: false %>
+    <%= f.input :description, input_html: { rows: 18 }, required: false %>
     <div class="text-center">
      <%= f.button :submit, '質問する', class: "btn btn-success" %>
     </div>

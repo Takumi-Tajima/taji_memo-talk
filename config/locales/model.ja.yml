@@ -19,13 +19,13 @@ ja:
         remember_created_at: セッション作成日時
       memo:
         title: タイトル
-        description: 詳細
+        description: メモ本文
       question:
         title: タイトル
-        description: 詳細
+        description: 質問内容
       answer:
         title: タイトル
-        description: 詳細
+        description: 回答内容
 
   # 全てのmodelで共通して使用するattributesを定義
   attributes:
@@ -72,12 +72,3 @@ ja:
       invalid_chars: "%{attribute}に使用できない文字が含まれています（%{chars}）。"
       in_between: "の容量は%{min}以上%{max}以下にしてください。"
       spoofed_media_type: "%{attribute}の拡張子と内容が一致していません。"
-
-  flash:
-    new: 作成しました！
-    updated: 更新しました！
-    failed: 失敗しました！
-    destroy: 削除しました！
-    login: ログインしました！
-    logout: ログアウトしました！
-    limited_access: 不正な侵入です！！
