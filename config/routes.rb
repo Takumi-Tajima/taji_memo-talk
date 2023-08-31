@@ -7,13 +7,7 @@ Rails.application.routes.draw do
   }
   
   resources :questions do
-    collection do
-      get "mypost"
-    end
-  end
-  
-  resources :questions do
-    resources :answers, only: [:create] # /questions/1/answers/2
+    resources :answers, only: %i[create]
     collection do
       get "mypost"
     end

@@ -1,8 +1,4 @@
-<div class="container mt-5 pt-5">
-  <div class="row justify-content-center">
-    <h2 class="text-center">メモ新規登録</h2>
-
-    <%= render 'form', url: memos_path(@memo)%>
-    <%= link_to "戻る", memos_path, class: "text-center"%>
-  </div>
+<div class="m-3 mt-5">
+  <h2 class="mb-5">メモ新規登録</h2>
+  <%= render 'form', url: memos_path(@memo)%>
 </div>
