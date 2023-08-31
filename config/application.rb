@@ -12,6 +12,10 @@ require "action_mailbox/engine"
 require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
+
+require_relative 'boot'
+require 'rails/all'
+
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -33,5 +37,15 @@ module MemoTalk
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    
+    
+    # 日本語化設定
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
+    config.i18n.default_locale = :ja
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+    
   end
+  
+
 end

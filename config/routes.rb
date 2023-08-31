@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'answers/create'
    devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   }
   
   resources :questions do
+    resources :answers, only: %i[create]
     collection do
       get "mypost"
     end

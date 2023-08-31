@@ -1,10 +1,8 @@
 class MemosController < ApplicationController
-
-  #current_user の設定
   before_action :set_memo, only: [:show, :edit, :update, :destroy]
   
   def index
-    @memos = current_user.memos.all # ここでエラー発生!!(current_userにmemosがないらしいです)
+    @memos = current_user.memos.all
   end
   
   def new
@@ -17,7 +15,7 @@ class MemosController < ApplicationController
   def create
     @memo = current_user.memos.new(memo_params)
     if @memo.save
-      redirect_to memo_path(@memo) # 作成したメモの詳細画面へredirect
+      redirect_to memo_path(@memo)
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,20 +26,18 @@ class MemosController < ApplicationController
   
   def update
     if @memo.update(memo_params)
-      redirect_to memo_path(@memo) # 更新したメモの詳細画面へredirect
+      redirect_to memo_path(@memo)
     else
       render :edit, status: :unprocessable_entity
     end
   end
   
   def destroy
-    @memo.destroy! # 失敗した場合は例外を発生(ここで処理が中断)
+    @memo.destroy!
     redirect_to memos_path
   end
   
   private
-  
-    # current_user の設定
     def set_memo
       @memo = current_user.memos.find(params[:id])
     end
@@ -49,5 +45,4 @@ class MemosController < ApplicationController
     def memo_params
       params.require(:memo).permit(:title, :description)
     end
-  
 end

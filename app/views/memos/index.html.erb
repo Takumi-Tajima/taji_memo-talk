@@ -1,13 +1,24 @@
-<h1>メモ一覧</h1>
-
-<% if @memos.present? %>
-　<% @memos.each do |memo| %>
-　  <%= link_to memo.title, memo_path(memo)%>
+<div class="m-3 mt-5">
+  <h2>メモ一覧</h2>
+  <div class="text-end">
+    <%= link_to 'メモ新規追加', new_memo_path, class: "btn btn-primary"%>
+  </div>
+  
+  <% if @memos.present? %>
+  　<% @memos.each do |memo| %>
+  　<div class="card mr-5 ms-5">
+      <div class="card-body">
+  　    <%= link_to memo_path(memo), class: "memo_title" do %>
+  　      <%= memo.title %>
+  　      <div class="text-muted small text-truncate">
+  　        <%= memo.description%>
+  　      </div>
+　     <% end %>
+  　    <%= link_to "編集", edit_memo_path(memo), class: "float-end btn btn-success" %>
+  　   </div>
+  　</div>
+    <% end %>
+  <% else %>
+    メモを追加しましょう！
   <% end %>
-<% else %>
-  メモを追加しましょう！
-<% end %>
-
-<%= link_to 'メモ新規追加', new_memo_path%>
-
-<%= button_to 'Log out', destroy_user_session_path, method: :delete%>
+</div>

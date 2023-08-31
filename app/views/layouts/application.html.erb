@@ -11,6 +11,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if user_signed_in? %>
+      <div class="row">
+        <div class="col-3">
+          <%= render "layouts/sidebar"%>
+        </div>
+         <div class="col-8">
+          <%= yield %>
+        </div>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>
