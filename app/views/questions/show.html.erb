@@ -1,15 +1,12 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erbあああああ</p>
-
 <%= @question.title %>
 
-<%= simple_form_for [@question, Answer.new] do |f| %>
+<%= simple_form_for [@question, @answer] do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.button :submit, '回答する' %>
 <% end %>
 
-<% @question.answer.each do |answer| %>
+<% @question.answers.each do |answer| %>
   <%= answer.name %>
   <%= answer.description %>
 <% end %>
