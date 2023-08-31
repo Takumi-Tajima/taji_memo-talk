@@ -1,6 +1,4 @@
 class MemosController < ApplicationController
-
-  #current_user の設定
   before_action :set_memo, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -40,8 +38,6 @@ class MemosController < ApplicationController
   end
   
   private
-  
-    # current_user の設定
     def set_memo
       @memo = current_user.memos.find(params[:id])
     end
@@ -49,5 +45,4 @@ class MemosController < ApplicationController
     def memo_params
       params.require(:memo).permit(:title, :description)
     end
-  
 end

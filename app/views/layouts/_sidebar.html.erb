@@ -27,7 +27,9 @@
       <strong><%= current_user.email%></strong>
     </a>
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li>
+        <%= link_to 'Profile', edit_user_registration_path(current_user), class:"dropdown-item"%>
+      </li>
       <li><hr class="dropdown-divider"></li>
       <li>
         <%= button_to 'Log out', destroy_user_session_path, method: :delete, class:"dropdown-item"%>
