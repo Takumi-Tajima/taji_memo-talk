@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      memo: メモ
+      questions: 質問
+      answers: 回答
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        encrypted_password: 暗号化されたパスワード
+        reset_password_token: パスワード再設定用トークン
+        reset_password_sent_at: パスワード再設定用トークン作成日時
+        remember_created_at: セッション作成日時
+      memo:
+        title: タイトル
+        description: 詳細
+      question:
+        title: タイトル
+        description: 詳細
+      answer:
+        title: タイトル
+        description: 詳細
+
+  # 全てのmodelで共通して使用するattributesを定義
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
