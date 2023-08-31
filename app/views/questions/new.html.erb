@@ -1,8 +1,5 @@
-<h1>Questions#new</h1>
-<p>Find me in app/views/questions/new.html.erb</p>
-
 <%= simple_form_for @question do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
+  <%= f.input :title, required: false %>
+  <%= f.input :description, required: false%>
  <%= f.button :submit, '質問する' %>
 <% end %>
