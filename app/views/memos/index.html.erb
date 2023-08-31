@@ -1,3 +1,5 @@
+<!-- PATH:root_path -->
+
 <h1>メモ一覧</h1>
 
 <% if @memos.present? %>
@@ -10,4 +12,4 @@
 
 <%= link_to 'メモ新規追加', new_memo_path%>
 
-<%= button_to 'Log out', destroy_user_session_path, method: :delete%>
+<%= button_to 'ログアウト', destroy_user_session_path, method: :delete%>

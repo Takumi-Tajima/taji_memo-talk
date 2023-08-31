@@ -1,4 +1,7 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<!-- PATH:/users/edit -->
+<!-- Edit <%= resource_name.to_s.humanize %> -->
+
+<h2>登録情報の変更</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
@@ -13,10 +16,7 @@
 
   <div class="field">
     <%= f.input :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br>
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+    
   </div>
 
   <div class="field">
@@ -24,17 +24,21 @@
   </div>
 
   <div class="field">
+    <% if @minimum_password_length %>
+      <br>
+      (<%= @minimum_password_length %>文字以上で設定してください)
+    <% end %>
     <%= f.input :current_password, autocomplete: "current-password", input_html: { type: :password } %>
   </div>
 
   <div class="actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "更新" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>ユーザーの消去</h3>
 
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+<div>Unhappy? <%= button_to "アカウント消去", registration_path(resource_name), data: { confirm: "本当に消去しますか?", turbo_confirm: "本当に消去しますか?" }, method: :delete %></div>
 
-<%= link_to "Back", :back %>
+<%= link_to "戻る", :back %>
 
