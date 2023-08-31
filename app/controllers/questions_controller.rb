@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
 
   def index
-    # @questions = Questions.all    
+    # @questions = Questions.all
   end
 
   def mypost
@@ -15,11 +15,13 @@ class QuestionsController < ApplicationController
   end
   
   def show
+    # @answers = @question.answers.all
+    # @answer = @question.answers.new
   end
   
   def create
     @question = current_user.questions.new(question_params)
-    if @question.save
+    if @question.save!
       redirect_to question_path(@question) #パス確認
     else
       render :new, status: :unprocessable_entity
@@ -45,7 +47,7 @@ class QuestionsController < ApplicationController
   private
   
     def set_question
-      # @question = Question.find(params[:id])
+      @question = Question.find(params[:id])
     end
     
     def question_params
