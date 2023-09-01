@@ -1,18 +1,20 @@
+<% content_for(:title, "パスワード変更") %>
+
 <div class="container mt-5 pt-5">
   <h2 class="text-center mb-5">パスワード変更</h2>
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), method: :put) do |f| %>
+    <%= f.input :reset_password_token, as: :hidden %>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), method: :put) do |f| %>
-  <%= f.input :reset_password_token, as: :hidden %>
+    <div class="field col-md-6 offset-md-3">
+      <%= f.input :password, autofocus: true, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field col-md-6 offset-md-3">
-    <%= f.input :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
+    <div class="field col-md-6 offset-md-3">
+      <%= f.input :password_confirmation, autocomplete: "new-password" %>
+    </div>
 
-  <div class="field col-md-6 offset-md-3">
-    <%= f.input :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions text-center mt-5">
-    <%= f.button :submit, "パスワードを変更する", class: "btn btn-success" %>
-  </div>
-<% end %>
+    <div class="actions text-center mt-5">
+      <%= f.button :submit, "パスワードを変更する", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>

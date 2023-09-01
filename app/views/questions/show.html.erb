@@ -1,3 +1,5 @@
+<% content_for(:title, @question.title ) %>
+
 <div class="card mt-5 mb-5">
   <div class="card-header">
      <%= @question.title %>
@@ -13,7 +15,6 @@
     </div>
   </div>
 </div>
-
 
 <h4>回答する</h4>
 <div class="card mb-5">
