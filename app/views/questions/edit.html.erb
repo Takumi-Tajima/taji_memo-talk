@@ -1,4 +1,13 @@
 <% content_for(:title, "質問編集") %>
 
-<h1>Questions#edit</h1>
-<p>Find me in app/views/questions/edit.html.erb</p>
+<div class="m-3 mt-5">
+  <h2 class="mb-5"><%= @question.title%>の編集</h2>
+
+  <%= simple_form_for @question do |f| %>
+    <%= f.input :title, required: false %>
+    <%= f.input :description, input_html: { rows: 18 }, required: false %>
+    <div class="text-center">
+     <%= f.button :submit, '質問する', class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
