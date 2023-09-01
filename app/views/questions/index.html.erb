@@ -13,6 +13,9 @@
       <div class="card-body">
   　    <%= link_to question_path(question), class: "memo_title" do %>
   　      <%= question.title %>
+  　      <div class="text-end">
+  　        質問者: <%= question.user.name %>
+      　   </div>
   　      <div class="text-muted small text-truncate">
   　        <%= question.description%>
   　      </div>
