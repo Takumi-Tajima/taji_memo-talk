@@ -6,8 +6,12 @@
       <%= render "users/shared/error_messages", resource: resource %>
     
       <div class="field">
-        <%= f.input :email, autofocus: true, autocomplete: "email" %>
+        <%= f.input :name, autofocus: true, autocomplete: "name", required: false %>
       </div>
+      <div class="field">
+        <%= f.input :email, autocomplete: "email" %>
+      </div>
+
     
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
