@@ -21,7 +21,14 @@
         </div>
       </div>
     <% else %>
-      <%= yield %>
+      <div class="row">
+        <div class="col-3">
+          <%= render "layouts/open_sidebar"%>
+        </div>
+         <div class="col-8">
+          <%= yield %>
+        </div>
+      </div>
     <% end %>
   </body>
 </html>
