@@ -1,2 +1,35 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+
+<div class="m-3 mt-5">
+  <h2>質問掲示板</h2>
+  <div class="text-end">
+    <% if user_signed_in? %>
+      <%= link_to '質問する', new_question_path, class: "btn btn-primary"%>
+    <% end %>
+  </div>
+  
+  <% if @questions.present? %>
+  　<% @questions.each do |question| %>
+  　<div class="card mr-5 ms-5">
+      <div class="card-body">
+  　    <%= link_to question_path(question), class: "memo_title" do %>
+  　      <%= question.title %>
+  　      <div class="text-end">
+  　        質問者: <%= question.user.name %>
+      　   </div>
+  　      <div class="text-muted small text-truncate">
+  　        <%= question.description%>
+  　      </div>
+　     <% end %>
+　     <% if user_signed_in? %>
+  　      <div class="d-flex float-end">
+    　      <%= link_to "編集", edit_question_path(question), class: "btn btn-success" %>
+    　      <%= button_to "削除", question_path(question), data: { confirm: "本当に削除しますか?", turbo_confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger"%>
+　       </div>
+　     <% end %>
+  　   </div>
+  　</div>
+    <% end %>
+  <% else %>
+    質問は現在ありません
+  <% end %>
+</div>

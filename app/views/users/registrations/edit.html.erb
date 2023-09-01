@@ -3,8 +3,6 @@
     <h2 >プロフィール変更</h2>
   </div>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put) do |f| %>
-      <%= render "users/shared/error_messages", resource: resource %>
-    
       <div class="field">
         <%= f.input :name, autofocus: true, autocomplete: "name", required: false %>
       </div>
@@ -38,6 +36,6 @@
 
 <div class="text-end">
   <%= button_to "アカウント消去", registration_path(resource_name),
-    data: { confirm: "本当に消去しますか?", turbo_confirm: "本当に消去しますか?" },
+    data: { confirm: "本当に退会しますか?", turbo_confirm: "本当に退会しますか?" },
     method: :delete, class: "btn btn-danger" %>
 </deiv>

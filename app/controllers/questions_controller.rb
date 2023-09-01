@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
   
   def update
     if @question.update(question_params)
-      redirect_to question_path(@question) #パス確認
+      redirect_to question_path(@question)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -42,7 +42,7 @@ class QuestionsController < ApplicationController
   
   def destroy
     @question.destroy! 
-    redirect_to questions_path #パス確認
+    redirect_to questions_path
   end
   
   private
@@ -54,7 +54,4 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:title, :description)
     end
-
-
-
 end
