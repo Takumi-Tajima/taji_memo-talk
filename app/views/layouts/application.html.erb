@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <!--session_flash_messageのパーシャル埋め込む-->
+    <% flash.each do |message_type, message| %>
+      <div><%= message %></div>
+    <% end %>
+    
     <% if user_signed_in? %>
       <div class="row">
         <div class="col-3">
