@@ -24,6 +24,11 @@
         <%= f.input :password_confirmation, autocomplete: "new-password" %>
       </div>
     
+      <div class="field">
+          ユーザー画像の設定<br>
+          <%= f.file_field :image %>
+      </div>
+        
       <div class="actions text-center mt-5">
         <%= f.button :submit, "更新", class: "btn btn-success" %>
       </div>
