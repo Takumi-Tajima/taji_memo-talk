@@ -15,6 +15,7 @@ class QuestionsController < ApplicationController
   end
   
   def show
+    @user = User.find(@question.user_id)
     @answers = @question.answers.all
     @answer = @question.answers.new
   end

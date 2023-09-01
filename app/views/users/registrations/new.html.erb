@@ -7,9 +7,12 @@
         <%= render "users/shared/error_messages", resource: resource %>
       
         <div class="field col-md-6 offset-md-3">
-          <%= f.input :email, autofocus: true, autocomplete: "email"%>
+          <%= f.input :name, autofocus: true, autocomplete: "name", required: false %>
         </div>
-      
+        <div class="field col-md-6 offset-md-3">
+          <%= f.input :email, autocomplete: "email"%>
+        </div>
+
         <div class="field col-md-6 offset-md-3">
           <% if @minimum_password_length %>
             (<%= @minimum_password_length %>文字以上で設定してください)
