@@ -15,6 +15,7 @@ class QuestionsController < ApplicationController
   end
   
   def show
+    @user = User.find(@question.user_id)
     @answers = @question.answers.all
     @answer = @question.answers.new
   end
@@ -36,7 +37,7 @@ class QuestionsController < ApplicationController
   def update
     if @question.update(question_params)
       flash[:notice] = "質問が更新されました"
-      redirect_to question_path(@question) #パス確認
+      redirect_to question_path(@question)
     else
       flash.now[:alert] = "もう一度入力してください"
       render :edit, status: :unprocessable_entity
@@ -45,8 +46,8 @@ class QuestionsController < ApplicationController
   
   def destroy
     @question.destroy! 
-    flash[:notice] = "質問が削除されました" # 失敗のflash_messageも記載すべきか
-    redirect_to questions_path #パス確認
+    flash[:notice] = "質問が削除されました"
+    redirect_to questions_path
   end
   
   private
@@ -58,7 +59,4 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:title, :description)
     end
-
-
-
 end
