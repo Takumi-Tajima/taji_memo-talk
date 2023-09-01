@@ -1,15 +1,38 @@
-質問者の名前: <%= @user.name %>
-タイトル: <%= @question.title %>
-質問内容: <%= @question.description %>
+<div class="card mt-5 mb-5">
+  <div class="card-header">
+     <%= @question.title %>
+     <div class="text-end">
+      質問者: <%= @user.name %>
+      </div>
+  </div>
+    
+  <div class:"card-body">
+    <div class="p-3">
+      質問内容: </br>
+      <%= @question.description %>
+    </div>
+  </div>
+</div>
 
-<%= simple_form_for [@question, @answer] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.button :submit, '回答する' %>
-<% end %>
-回答数: <%= @question.answers.length %><br>
+
+<h4>回答する</h4>
+<div class="card mb-5">
+  <div class="card-body">
+    <%= simple_form_for [@question, @answer] do |f| %>
+      <%= f.input :name, placeholder: "匿名さん" %>
+      <%= f.input :description, required: false  %>
+      <div class="text-end">
+        <%= f.button :submit, '回答する', class: "btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <% @question.answers.each do |answer| %>
-  回答者の名前: <%= answer.name %>
-  回答内容: <%= answer.description %>
-  <br>
+  <div class="card mt-3 mb-3">
+    <div class="card-footer">
+      回答者: <%= answer.name %></br>
+      <%= answer.description %>
+    </div>
+  </div>
 <% end %>
