@@ -1,7 +1,20 @@
-<!-- PATH:/memos/show/:id -->
+<div class="m-3 mt-5">
+  <h2><%= @memo.title%></h2>
+  <div class="card mt-5">
+    <div class="card-header">
+      <div class="d-flex justify-content-end gap-2">
+        <%= link_to '編集', edit_memo_path(@memo), class: "btn btn-success"%>
+        <%= button_to '削除', memo_path(@memo), method: :delete, class: "btn btn-danger"%>
+      </div>
+    </div>
+    <div class="card-body">
+      <%= @memo.description%>
+    </div>
+  </div>
+  <card>
+  
+</div>
 
-<%= @memo.title%>
-<%= @memo.description%>
-<%= link_to '編集', edit_memo_path(@memo)%>
-<%= button_to '削除', memo_path(@memo), method: :delete%>
-<%= link_to "戻る", memos_path %>
+
+
+
