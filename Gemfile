@@ -76,3 +76,7 @@ gem "sentry-ruby", "~> 5.10"
 gem "sentry-rails", "~> 5.10"
 
 gem 'rails-i18n' # 日本語化設定
+
+gem "carrierwave" # ユーザー画像の設定
+
+gem 'mini_magick' # 画像のリサイズ
