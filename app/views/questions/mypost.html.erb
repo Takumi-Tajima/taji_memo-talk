@@ -1,1 +1,28 @@
-<h2>Mypost</h2>
+
+<div class="m-3 mt-5">
+  <h2>自分の投稿した質問</h2>
+  <div class="text-end">
+      <%= link_to '質問する', new_question_path, class: "btn btn-primary"%>
+  </div>
+  
+  <% if current_user.questions.present? %>
+  　<% current_user.questions.each do |question| %>
+  　<div class="card mr-5 ms-5">
+      <div class="card-body">
+  　    <%= link_to question_path(question), class: "memo_title" do %>
+  　      <%= question.title %>
+  　      <div class="text-muted small text-truncate">
+  　        <%= question.description%>
+  　      </div>
+　     <% end %>
+  　      <div class="d-flex float-end">
+    　      <%= link_to "編集", edit_question_path(question), class: "btn btn-success" %>
+    　      <%= button_to "削除", question_path(question), data: { confirm: "本当に削除しますか?", turbo_confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger"%>
+　       </div>
+  　   </div>
+  　</div>
+    <% end %>
+  <% else %>
+    質問をしていません
+  <% end %>
+</div>
