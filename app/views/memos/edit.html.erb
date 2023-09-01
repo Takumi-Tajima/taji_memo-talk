@@ -1,4 +1,6 @@
-<%= @memo.title%>
+<% content_for(:title, "メモ編集") %>
 
-<%= render 'form', url: memo_path(@memo) %>
-<%= link_to "戻る", memos_path %>
+<div class="m-3 mt-5">
+  <h2 class="mb-5"><%= @memo.title%></h2>
+  <%= render 'form', url: memo_path(@memo)%>
+</div>

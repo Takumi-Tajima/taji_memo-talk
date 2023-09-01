@@ -1,13 +1,17 @@
+<% content_for(:title, "プロフィール") %>
+
 <div class="m-3 mt-5">
   <div class="mb-5">
     <h2 >プロフィール変更</h2>
   </div>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), method: :put) do |f| %>
-      <%= render "users/shared/error_messages", resource: resource %>
-    
       <div class="field">
-        <%= f.input :email, autofocus: true, autocomplete: "email" %>
+        <%= f.input :name, autofocus: true, autocomplete: "name", required: false %>
       </div>
+      <div class="field">
+        <%= f.input :email, autocomplete: "email" %>
+      </div>
+
     
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -22,6 +26,11 @@
         <%= f.input :password_confirmation, autocomplete: "new-password" %>
       </div>
     
+      <div class="field">
+          ユーザー画像の設定<br>
+          <%= f.file_field :image %>
+      </div>
+        
       <div class="actions text-center mt-5">
         <%= f.button :submit, "更新", class: "btn btn-success" %>
       </div>
@@ -29,6 +38,6 @@
 
 <div class="text-end">
   <%= button_to "アカウント消去", registration_path(resource_name),
-    data: { confirm: "本当に消去しますか?", turbo_confirm: "本当に消去しますか?" },
+    data: { confirm: "本当に退会しますか?", turbo_confirm: "本当に退会しますか?" },
     method: :delete, class: "btn btn-danger" %>
 </deiv>

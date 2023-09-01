@@ -24,7 +24,7 @@ ja:
         title: タイトル
         description: 質問内容
       answer:
-        title: タイトル
+        name: 名前
         description: 回答内容
 
   # 全てのmodelで共通して使用するattributesを定義

@@ -1,4 +1,4 @@
-<div class="d-flex flex-column p-3 text-white bg-dark" style="width: 280px; height: 100vh;">
+<div class="d-flex flex-column p-3 text-white bg-dark sidebar__content">
   <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <span class="ml-3 fs-4">🌈メモトーーク!</span>
   </a>
@@ -22,10 +22,18 @@
   </ul>
   <hr>
   <div class="dropdown">
+    
     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-      <strong><%= current_user.email%></strong>
+
+      <% if current_user.image? %>
+        <img src=<%= current_user.image %> alt="" width="32" height="32" class="rounded-circle me-2">
+      <% else %>
+        <img src="/assets/default.png" alt="" width="32" height="32" class="rounded-circle me-2">
+      <% end %>
+      
+      <strong><%= current_user.name %></strong>
     </a>
+    
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
       <li>
         <%= link_to 'プロフィール', edit_user_registration_path(current_user), class:"dropdown-item"%>

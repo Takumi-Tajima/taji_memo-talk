@@ -4,8 +4,12 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
- def update_without_current_password(params, *options)
+  
+  validates :name, presence: true, length: {maximum: 20} 
+  
+  mount_uploader :image, ImageUploader # 画像のアップロード用
+  
+  def update_without_current_password(params, *options)
     params.delete(:current_password)
 
     if params[:password].blank? && params[:password_confirmation].blank?
@@ -17,4 +21,5 @@ class User < ApplicationRecord
     clean_up_passwords
     result
   end
+  
 end

@@ -15,8 +15,10 @@ class MemosController < ApplicationController
   def create
     @memo = current_user.memos.new(memo_params)
     if @memo.save
+      flash[:notice] = "メモが追加されました"
       redirect_to memo_path(@memo)
     else
+      flash.now[:alert] = "もう一度入力してください"
       render :new, status: :unprocessable_entity
     end
   end
@@ -26,14 +28,17 @@ class MemosController < ApplicationController
   
   def update
     if @memo.update(memo_params)
+      flash[:notice] = "メモが更新されました"
       redirect_to memo_path(@memo)
     else
+      flash.now[:alert] = "もう一度入力してください"
       render :edit, status: :unprocessable_entity
     end
   end
   
   def destroy
     @memo.destroy!
+    flash[:notice] = "メモを削除しました" #失敗のflash_messageも必要？
     redirect_to memos_path
   end
   
