@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  get 'rooms/index'
-  get 'rooms/show'
-  get 'rooms/new'
-  get 'rooms/edit'
-  get 'rooms/create'
-  get 'rooms/update'
-  get 'rooms/destroy'
+  
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     registrations: 'admins/registrations',
@@ -27,6 +21,10 @@ Rails.application.routes.draw do
   
   resources :memos
   root "memos#index"
+  
+  namespace :admins do
+    resources :rooms
+  end
   
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
