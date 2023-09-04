@@ -1,5 +1,5 @@
-<div class="Notification">
- <% flash.each do |key, value| %>
- <%= content_tag :div, value, class: key %>
- <% end %>
-</div>
+<% if flash.present? %>
+  <% flash.each do |key, value| %>
+   <%= content_tag :div, value, class: key %>
+  <% end %>
+<% end %>
