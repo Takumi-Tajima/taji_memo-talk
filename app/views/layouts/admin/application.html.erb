@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= page_title(yield(:title)) %></title>
-    <!--
-    ブラウザ上部に表示するタイトルアイコンの設定
-    <link href="/assets/xxx.png" rel="icon" type="image/x-icon" />
-    -->
+    <title><%= admin_page_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -17,10 +13,10 @@
   <body>
     <%= render 'layouts/notification' %>
 
-    <% if user_signed_in? %>
+    <% if admin_signed_in? %>
       <div class="row">
         <div class="col-3">
-          <%= render "layouts/sidebar"%>
+          <%= render "layouts/admin/sidebar"%>
         </div>
          <div class="col-8">
           <%= yield %>
@@ -29,7 +25,7 @@
     <% else %>
       <div class="row">
         <div class="col-3">
-          <%= render "layouts/before_login_sidebar"%>
+          <%= render "layouts/admin/before_login_sidebar"%>
         </div>
          <div class="col-8">
           <%= yield %>

@@ -1,0 +1,26 @@
+<div class="d-flex flex-column p-3 text-white bg-secondary sidebar__content">
+  <%= link_to "🌈 【管理者画面】メモトーーク!", "#", class: "d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"%>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <%= link_to "スレッド一覧", "#", class: "nav-link fw-bold sidebar__link"%>
+    </li>
+  </ul>
+  <hr>
+  <div class="dropdown">
+    
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+      <strong><%= current_admin.email %></strong>
+    </a>
+    
+    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+      <li>
+        <%= link_to '設定', edit_admin_registration_path, class:"dropdown-item"%>
+      </li>
+      <li><hr class="dropdown-divider"></li>
+      <li>
+        <%= button_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"dropdown-item"%>
+      </li>
+    </ul>
+  </div>
+</div>
