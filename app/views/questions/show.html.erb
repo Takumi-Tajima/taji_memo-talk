@@ -33,8 +33,7 @@
   <div class="card mt-3 mb-3">
     <div class="card-footer">
       回答者: <%= answer.name %></br>
-      <%= answer.description %>
-      <!--TODO: 謎に回答が空白1個あるから、マークダウンでnilエラー出る-->
+      <%= markdown(answer.description) %>
     </div>
   </div>
 <% end %>
