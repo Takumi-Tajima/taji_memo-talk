@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i[show edit update destroy]
 
   def index
-    @questions = Question.all
+    @questions = Question.all.default_order
   end
 
   def mypost
@@ -16,8 +16,7 @@ class QuestionsController < ApplicationController
   
   def show
     @user = User.find(@question.user_id)
-    @answers = @question.answers.all
-    @answer = @question.answers.new
+    @answer = Answer.new
   end
   
   def create

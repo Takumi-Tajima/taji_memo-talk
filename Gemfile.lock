@@ -189,12 +189,14 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    redcarpet (3.6.0)
     reline (0.3.8)
       io-console (~> 0.5)
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    rouge (4.1.3)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     sentry-rails (5.10.0)
@@ -253,6 +255,8 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.7, >= 7.0.7.2)
   rails-i18n
+  redcarpet
+  rouge
   sentry-rails (~> 5.10)
   sentry-ruby (~> 5.10)
   simple_form
