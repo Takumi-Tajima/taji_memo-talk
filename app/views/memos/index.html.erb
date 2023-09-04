@@ -1,3 +1,5 @@
+<% content_for(:title, "メモ一覧") %>
+
 <div class="m-3 mt-5">
   <h2>メモ一覧</h2>
   <div class="text-end">
@@ -14,7 +16,10 @@
   　        <%= memo.description%>
   　      </div>
 　     <% end %>
-  　    <%= link_to "編集", edit_memo_path(memo), class: "float-end btn btn-success" %>
+　     <div class="d-flex float-end">
+    　    <%= link_to "編集", edit_memo_path(memo), class: "btn btn-success" %>
+    　    <%= button_to "削除", memo_path(memo), data: { confirm: "本当に削除しますか?", turbo_confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger"%>
+　     </div>
   　   </div>
   　</div>
     <% end %>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'answers/create'
    devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -15,4 +14,6 @@ Rails.application.routes.draw do
   
   resources :memos
   root "memos#index"
+  
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

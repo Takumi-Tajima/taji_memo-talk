@@ -4,4 +4,6 @@ class Question < ApplicationRecord
   
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true
+  
+  scope :default_order, -> { order(created_at: :desc) }
 end

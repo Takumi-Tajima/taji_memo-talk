@@ -1,0 +1,14 @@
+<div class="d-flex flex-column p-3 text-white bg-dark sidebar__content">
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <span class="ml-3 fs-4">🌈メモトーーク!</span>
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <%= link_to "ログイン", new_session_path(resource_name), class: "nav-link fw-bold sidebar__link"%>
+    </li>
+    <li class="nav-item">
+      <%= link_to "サインアップ", new_registration_path(resource_name), class: "nav-link fw-bold sidebar__link"%>
+    </li>
+  </ul>
+</div>
