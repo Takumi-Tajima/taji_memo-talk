@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'rooms/index'
+  get 'rooms/show'
   
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
@@ -20,11 +22,12 @@ Rails.application.routes.draw do
   end
   
   resources :memos
-  root "memos#index"
-  
+  resources :rooms, only: %i[index show]
   namespace :admins do
     resources :rooms, only: %i[index new edit create update destroy]
   end
+  
+  root "memos#index"
   
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
