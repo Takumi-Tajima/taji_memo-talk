@@ -28,6 +28,8 @@ ja:
         description: 回答内容
       room:
         name: スレッド名
+      comment:
+        content: コメント 
 
   # 全てのmodelで共通して使用するattributesを定義
   attributes:
