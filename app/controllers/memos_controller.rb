@@ -5,11 +5,14 @@ class MemosController < ApplicationController
     @memos = current_user.memos.default_order
   end
   
+  def show
+  end
+  
   def new
     @memo = current_user.memos.new
   end
   
-  def show
+  def edit
   end
   
   def create
@@ -21,9 +24,6 @@ class MemosController < ApplicationController
       flash.now[:alert] = "もう一度入力してください"
       render :new, status: :unprocessable_entity
     end
-  end
-  
-  def edit
   end
   
   def update
@@ -38,7 +38,7 @@ class MemosController < ApplicationController
   
   def destroy
     @memo.destroy!
-    flash[:notice] = "メモを削除しました" #失敗のflash_messageも必要？
+    flash[:notice] = "メモを削除しました"
     redirect_to memos_path
   end
   

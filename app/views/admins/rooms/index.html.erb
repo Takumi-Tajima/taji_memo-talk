@@ -1,0 +1,16 @@
+<% content_for(:title, "スレッド一覧") %>
+
+<div class="m-3 mt-5">
+  <h2>スレッド一覧</h2>
+  <div class="text-end">
+    <%= link_to 'スレッドを作成する', new_admins_room_path, class: "btn btn-primary"%>
+  </div>
+  
+  <% if @rooms.present? %>
+  　<% @rooms.each do |room| %>
+      <%= room.name %>
+    <% end %>
+  <% else %>
+    スレッドは現在ありません
+  <% end %>
+</div>
