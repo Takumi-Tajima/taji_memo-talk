@@ -1,7 +1,5 @@
 <div class="d-flex flex-column p-3 text-white bg-dark sidebar__content">
-  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-    <span class="ml-3 fs-4">🌈メモトーーク!</span>
-  </a>
+  <%= link_to "🌈メモトーーク!", root_path, class: "fs-4 d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"%>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
@@ -19,6 +17,17 @@
     <li>
       <%= link_to "質問する", new_question_path, class: "nav-link fw-bold sidebar__link"%>
     </li>
+    <hr>
+    <div class="scroll">
+    <% rooms = Room.all %>
+    <% if rooms.present? %>
+      <% rooms.each do |room| %>
+        <li>
+          <%= link_to room.name, room_path(room), class: "nav-link fw-bold sidebar__link"%>
+        </li>
+      <% end %>
+    <% end %>
+    </div>
   </ul>
   <hr>
   <div class="dropdown">
@@ -26,9 +35,9 @@
     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 
       <% if current_user.image? %>
-        <img src=<%= current_user.image %> alt="" width="32" height="32" class="rounded-circle me-2">
+        <%= image_tag current_user.image.url, size: '32x32', class: 'rounded-circle me-2' %>
       <% else %>
-        <img src="/assets/default.png" alt="" width="32" height="32" class="rounded-circle me-2">
+        <%= image_tag 'default.png', size: '32x32', class: 'rounded-circle me-2' %>
       <% end %>
       
       <strong><%= current_user.name %></strong>
@@ -36,7 +45,7 @@
     
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
       <li>
-        <%= link_to 'プロフィール', edit_user_registration_path(current_user), class:"dropdown-item"%>
+        <%= link_to 'プロフィール', edit_user_registration_path, class:"dropdown-item"%>
       </li>
       <li><hr class="dropdown-divider"></li>
       <li>

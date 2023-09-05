@@ -1,0 +1,16 @@
+<% content_for(:title, "スレッドを作成する") %>
+
+<div class="m-3 mt-5">
+  <h2 class="mb-5">スレッドを作成する</h2>
+
+  <div class="pt-5">
+    <%= simple_form_for [:admins, @room] do |f| %>
+      <div class="field col-md-6 offset-md-3">
+        <%= f.input :name, required: false %>
+      </div>
+      <div class="text-center">
+         <%= f.button :submit, '作成する', class: "btn btn-success mt-4" %>
+      </div>
+    <% end %>
+  </div>
+</div>
