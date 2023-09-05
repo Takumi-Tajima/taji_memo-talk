@@ -1,34 +1,31 @@
-<% content_for(:title, "ユーザー一覧") %>
+<% content_for(:title, "アカウント一覧") %>
 
 <div class="m-3 mt-5">
-  <h2>ユーザー一覧</h2>
-
+  <h2>アカウント一覧</h2>
+  
   <% if @users.present? %>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">名前</th>
+          <th scope="col">アカウント名</th>
           <th scope="col">メールアドレス</th>
-          <th scope="col">アクション</th>
+          <th scope="col"></th>
         </tr>
       </thead>
-      <tbody>
-        <% @users.each do |user| %>
+  　  <% @users.each do |user| %>
+        <tbody>
           <tr>
-            <th scope="row"><%= user.id %></th>
             <td><%= user.name %></td>
-            <td><%= user.email %></td>
-            <td>
+            <td><%= user.email%></td>
+            <td class="d-flex justify-content-evenly">
               <%= link_to "編集", edit_admins_user_path(user), class: "btn btn-success" %>
               <%= button_to "削除", admins_user_path(user), data: { confirm: "本当に削除しますか?", turbo_confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger" %>
             </td>
           </tr>
-        <% end %>
-      </tbody>
+        </tbody>
+      <% end %>
     </table>
   <% else %>
-    ユーザーが登録されていません。
+    現在アカウントは登録されていません
   <% end %>
 </div>
-
