@@ -1,4 +1,8 @@
 ja:
+  time:
+    ormats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%m/%d %H:%M"
   activerecord:
     errors:
       messages:

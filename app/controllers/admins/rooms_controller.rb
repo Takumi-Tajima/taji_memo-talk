@@ -2,7 +2,7 @@ class Admins::RoomsController < Admins::ApplicationController
   before_action :set_room, only: %i[show edit update destroy]
   
   def index
-    @rooms = Room.all.default_order
+    @rooms = Room.default_order
   end
 
   def new
@@ -16,7 +16,7 @@ class Admins::RoomsController < Admins::ApplicationController
     @room = Room.new(room_params)
     if @room.save
       flash[:notice] = "スレッドが作成されました"
-      redirect_to admins_room_path(@room)
+      redirect_to admins_rooms_path
     else
       flash.now[:alert] = "もう一度入力してください"
       render :new, status: :unprocessable_entity
@@ -26,7 +26,7 @@ class Admins::RoomsController < Admins::ApplicationController
   def update
     if @room.update(room_params)
       flash[:notice] = "スレッドが更新されました"
-      redirect_to admins_room_path(@room)
+      redirect_to admins_rooms_path
     else
       flash.now[:alert] = "もう一度入力してください"
       render :edit, status: :unprocessable_entity
