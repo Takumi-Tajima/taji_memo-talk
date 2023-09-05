@@ -1,2 +1,12 @@
-<h1>Rooms#edit</h1>
-<p>Find me in app/views/rooms/edit.html.erb</p>
+<% content_for(:title, "スレッドを作成する") %>
+
+<div class="m-3 mt-5">
+  <h2 class="mb-5"><%= @room.name%>を編集</h2>
+
+  <%= simple_form_for [:admins, @room] do |f| %>
+    <%= f.input :name, required: false %>
+    <div class="text-center">
+       <%= f.button :submit, '更新する', class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
