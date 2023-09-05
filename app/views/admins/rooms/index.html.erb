@@ -7,12 +7,28 @@
   </div>
   
   <% if @rooms.present? %>
-  　<% @rooms.each do |room| %>
-      <%= room.name %>
-      <%= link_to "編集", edit_admins_room_path(room), class: "btn btn-success" %>
-      <%= button_to "削除", admins_room_path(room), data: { confirm: "本当に削除しますか?", turbo_confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger" %>
-    <% end %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">スレッド名</th>
+          <th scope="col">作成日時</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+  　  <% @rooms.each do |room| %>
+        <tbody>
+          <tr>
+            <td><%= room.name %></td>
+            <td><%= room.created_at %></td>
+            <td class="d-flex justify-content-evenly">
+              <%= link_to "編集", edit_admins_room_path(room), class: "btn btn-success" %>
+              <%= button_to "削除", admins_room_path(room), data: { confirm: "本当に削除しますか?", turbo_confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger" %>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
   <% else %>
-    スレッドは現在ありません
+    現在スレッドはありません
   <% end %>
 </div>
