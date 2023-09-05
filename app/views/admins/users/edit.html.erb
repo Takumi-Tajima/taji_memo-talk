@@ -1,8 +1,7 @@
 <h2 class="mb-5 mt-5"><%= @user.name%>を編集</h2>
-<%= simple_form_for(@user, url: admins_user_path(@user)) do |f| %>
+<%= simple_form_for(@user, url: admins_user_path) do |f| %>
   <%= f.input :name, required: false%>
   <%= f.input :email, required: false%>
-  <%= f.input :password, required: false%>
   <div class="text-center mt-5">
     <%= f.button :submit, '保存する', class: "btn btn-success"%>
   </div>

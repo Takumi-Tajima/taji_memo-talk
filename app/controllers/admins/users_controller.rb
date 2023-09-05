@@ -12,7 +12,7 @@ before_action :set_user, only: %i[edit update destroy]
   def update
     if @user.update(user_params)
       flash[:notice] = "プロフィールが更新されました"
-      redirect_to admins_users_path(@user)
+      redirect_to admins_users_path
     else
       flash.now[:alert] = "もう一度入力してください"
       render :edit, status: :unprocessable_entity
@@ -34,5 +34,5 @@ def set_user
 end
 
 def user_params
- params.require(:user).permit(:name, :email, :password)
+ params.require(:user).permit(:name, :email)
 end
