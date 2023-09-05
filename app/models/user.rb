@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :memos
-  has_many :questions
+  has_many :memos, dependent: :destroy
+  has_many :questions, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
