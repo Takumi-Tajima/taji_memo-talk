@@ -17,6 +17,17 @@
     <li>
       <%= link_to "質問する", new_question_path, class: "nav-link fw-bold sidebar__link"%>
     </li>
+    <hr>
+    <div class="scroll">
+    <% rooms = Room.all %>
+    <% if rooms.present? %>
+      <% rooms.each do |room| %>
+        <li>
+          <%= link_to room.name, room_path(room), class: "nav-link fw-bold sidebar__link"%>
+        </li>
+      <% end %>
+    <% end %>
+    </div>
   </ul>
   <hr>
   <div class="dropdown">
