@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   root "memos#index"
   
   namespace :admins do
-    resources :rooms
+    resources :rooms, only: %i[index new edit create update destroy]
   end
   
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
