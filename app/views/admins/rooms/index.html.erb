@@ -9,6 +9,8 @@
   <% if @rooms.present? %>
   　<% @rooms.each do |room| %>
       <%= room.name %>
+      <%= link_to "編集", edit_admins_room_path(room), class: "btn btn-success" %>
+      <%= button_to "削除", admins_room_path(room), data: { confirm: "本当に削除しますか?", turbo_confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger" %>
     <% end %>
   <% else %>
     スレッドは現在ありません
