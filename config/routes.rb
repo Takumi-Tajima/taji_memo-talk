@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'rooms/index'
-  get 'rooms/show'
-  
+
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     registrations: 'admins/registrations',
@@ -22,7 +20,9 @@ Rails.application.routes.draw do
   end
   
   resources :memos
-  resources :rooms, only: %i[index show]
+  resources :rooms, only: %i[show] do
+    resources :comments, only: %i[create]
+  end
   namespace :admins do
     resources :rooms, only: %i[index new edit create update destroy]
     resources :users, only: %i[index edit update destroy]
