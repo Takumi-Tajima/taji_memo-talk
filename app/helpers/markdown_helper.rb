@@ -34,12 +34,10 @@ class CustomRenderHTML < Redcarpet::Render::HTML
 
   private
 
-  # wrap CSSクラス名の定義
   def wrap_class
     'highlight-wrap'
   end
 
-  # コピーボタンの定義。クリックするとJavaScriptファンクションが実行される
   def copy_button
     "<button class='btn-sm btn btn-secondary float-end' onclick='copy(this)'>Copy</button>"
   end
