@@ -8,20 +8,20 @@
     <li class="nav-item">
       <%= link_to "サインアップ", new_user_registration_path, class: "nav-link fw-bold sidebar__link"%>
     </li>
-    <br><hr>
+    <hr>
     <li class="nav-item fw-bold thread_index">
       スレッド一覧
     </li>
     <br>
-    <div class="scroll">
-    <% rooms = Room.all %>
-    <% if rooms.present? %>
-      <% rooms.each do |room| %>
-        <li>
-          <%= link_to room.name, room_path(room), class: "nav-link fw-bold sidebar__link"%>
-        </li>
+    <div class="before_loggin_thred_scroll">
+      <% rooms = Room.all %>
+      <% if rooms.present? %>
+        <% rooms.each do |room| %>
+          <li>
+            <%= link_to room.name, room_path(room), class: "nav-link fw-bold sidebar__link"%>
+          </li>
+        <% end %>
       <% end %>
-    <% end %>
     </div>
   </ul>
 </div>
