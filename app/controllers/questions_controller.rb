@@ -20,9 +20,25 @@ class QuestionsController < ApplicationController
     @answer = Answer.new
   end
   
+
   def create
     @question = current_user.questions.new(question_params)
-    if @question.save # ! を外すことでtrue, falseを返すことができるようになる
+    # テキストをPurgoMalum APIで検査
+    text = @question.description
+
+    # APIエンドポイントのURLを作成
+    encoded_text = CGI.escape(text)
+    url = URI.parse("https://www.purgomalum.com/service/json?text=#{encoded_text}")
+
+    # HTTPリクエストを送信
+    response = Net::HTTP.get(url)
+
+    # レスポンスからデータを抽出
+    purified_text = JSON.parse(response)['result']
+
+    @question.description = purified_text # 不適切な言葉を置き換えたテキストを設定
+
+    if @question.save
       flash[:notice] = "質問が投稿されました"
       redirect_to question_path(@question)
     else
