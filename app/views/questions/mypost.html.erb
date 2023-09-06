@@ -12,6 +12,9 @@
       <div class="card-body">
   　    <%= link_to question_path(question), class: "memo_title" do %>
   　      <%= question.title %>
+  　       <div class="text-end">
+          　<%= l question.created_at, format: :short %>
+      　   </div>
   　      <div class="text-muted small text-truncate">
   　        <%= question.description%>
   　      </div>

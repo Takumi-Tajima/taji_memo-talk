@@ -15,7 +15,8 @@
   　    <%= link_to question_path(question), class: "memo_title" do %>
   　      <%= question.title %>
   　      <div class="text-end">
-  　        質問者: <%= question.user.name %>
+  　        質問者: <%= question.user.name %> &nbsp;&nbsp;&nbsp;&nbsp;
+           <%= l question.created_at, format: :short %>
       　   </div>
   　      <div class="text-muted small text-truncate">
   　        <%= question.description%>
@@ -23,8 +24,10 @@
 　     <% end %>
 　     <% if user_signed_in? %>
   　      <div class="d-flex float-end">
-    　      <%= link_to "編集", edit_question_path(question), class: "btn btn-success" %>
-    　      <%= button_to "削除", question_path(question), data: { confirm: "本当に削除しますか?", turbo_confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger"%>
+  　        <% if question.user == current_user %>
+             <%= link_to "編集", edit_question_path(question), class: "btn btn-success" %>
+      　      <%= button_to "削除", question_path(question), data: { confirm: "本当に削除しますか?", turbo_confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger"%>
+      　    <% end %>
 　       </div>
 　     <% end %>
   　   </div>
