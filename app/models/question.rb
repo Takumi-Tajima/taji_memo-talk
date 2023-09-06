@@ -17,7 +17,7 @@ class Question < ApplicationRecord
   private
 
   def search_qiita(query)
-    qiita_api_endpoint = 'https://qiita.com/api/v2/items'
+    qiita_api_endpoint = "https://qiita.com/api/v2/items"
     api_token = ENV['QIITA_API_TOKEN']
 
     uri = URI(qiita_api_endpoint)

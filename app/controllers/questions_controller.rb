@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   end
 
   def mypost
-	  @questions = current_user.questions.all
+	  @questions = current_user.questions.default_order
   end
   
   def new
