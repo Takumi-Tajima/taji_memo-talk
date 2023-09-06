@@ -24,8 +24,8 @@ gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
-gem 'kaminari', '~> 1.2', '>= 1.2.1'
-gem 'bootstrap5-kaminari-views', '~> 0.0.1'
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
