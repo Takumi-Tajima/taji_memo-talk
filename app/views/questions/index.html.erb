@@ -8,6 +8,8 @@
     <% end %>
   </div>
   
+  <%= render "layouts/pagination", obj: @questions%>
+  
   <% if @questions.present? %>
   　<% @questions.each do |question| %>
   　<div class="card mr-5 ms-5">
@@ -38,3 +40,5 @@
     質問は現在ありません
   <% end %>
 </div>
+
+<%= render "layouts/pagination", obj: @questions%>

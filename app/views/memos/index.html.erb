@@ -6,6 +6,8 @@
     <%= link_to 'メモ新規追加', new_memo_path, class: "btn btn-primary"%>
   </div>
   
+  <%= render "layouts/pagination", obj: @memos%>
+  
   <% if @memos.present? %>
   　<% @memos.each do |memo| %>
   　<div class="card mr-5 ms-5">
@@ -30,3 +32,5 @@
     メモを追加しましょう！
   <% end %>
 </div>
+
+ <%= render "layouts/pagination", obj: @memos%>

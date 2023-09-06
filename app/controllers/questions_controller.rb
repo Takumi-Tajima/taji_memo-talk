@@ -4,11 +4,11 @@ class QuestionsController < ApplicationController
   before_action :authenticate_question_user!, only: %i[edit]
 
   def index
-    @questions = Question.default_order
+    @questions = Question.default_order.page(params[:page])
   end
 
   def mypost
-	  @questions = current_user.questions.all
+	  @questions = current_user.questions.all.page(params[:page])
   end
   
   def new
