@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
   def show
     @user = User.find(@question.user_id)
     @answer = Answer.new
+    @question.search_qiita_and_associate
   end
   
   def create

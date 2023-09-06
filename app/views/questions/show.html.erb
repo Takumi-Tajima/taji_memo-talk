@@ -37,3 +37,12 @@
     </div>
   </div>
 <% end %>
+
+<h2>関連するQiita記事</h2>
+<ul>
+  <% @question.qiita_articles.each do |qiita_article| %>
+    <li>
+      <%= link_to qiita_article[:title], qiita_article[:url], target: '_blank' %>
+    </li>
+  <% end %>
+</ul>
