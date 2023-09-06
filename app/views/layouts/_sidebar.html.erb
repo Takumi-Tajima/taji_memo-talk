@@ -18,6 +18,10 @@
       <%= link_to "質問する", new_question_path, class: "nav-link fw-bold sidebar__link"%>
     </li>
     <hr>
+    <li class="nav-item fw-bold thread_index">
+      スレッド一覧
+    </li>
+    <br>
     <div class="scroll">
     <% rooms = Room.all %>
     <% if rooms.present? %>

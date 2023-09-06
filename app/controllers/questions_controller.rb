@@ -1,13 +1,14 @@
 class QuestionsController < ApplicationController
-  skip_before_action :authenticate_user! ,only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_question, only: %i[show edit update destroy]
+  before_action :authenticate_question_user!, only: %i[edit]
 
   def index
-    @questions = Question.default_order
+    @questions = Question.default_order.page(params[:page])
   end
 
   def mypost
-	  @questions = current_user.questions.all
+	  @questions = current_user.questions.all.page(params[:page])
   end
   
   def new
@@ -59,4 +60,12 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:title, :description)
     end
+    
+    def authenticate_question_user!
+      unless @question.user == current_user
+        flash[:alert] = "権限がありません"
+        redirect_to questions_path
+      end
+    end
+    
 end

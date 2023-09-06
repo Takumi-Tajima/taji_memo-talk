@@ -2,7 +2,7 @@ class MemosController < ApplicationController
   before_action :set_memo, only: [:show, :edit, :update, :destroy]
   
   def index
-    @memos = current_user.memos.default_order
+    @memos = current_user.memos.default_order.page(params[:page])
   end
   
   def show
