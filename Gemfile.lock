@@ -257,7 +257,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  bootstrap5-kaminari-views (~> 0.0.1)
+  bootstrap5-kaminari-views
   carrierwave
   cssbundling-rails
   debug
@@ -265,7 +265,7 @@ DEPENDENCIES
   dockerfile-rails (>= 1.5)
   jbuilder
   jsbundling-rails
-  kaminari (~> 1.2, >= 1.2.1)
+  kaminari
   letter_opener_web
   mini_magick
   pg (~> 1.1)
