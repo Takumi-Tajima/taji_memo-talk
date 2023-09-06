@@ -2,9 +2,10 @@
 
 <div class="card mt-5 mb-5">
   <div class="card-header">
-     <%= @question.title %>
+     <h3><%= @question.title %></h3>
      <div class="text-end">
-      質問者: <%= @user.name %>
+      質問者: <%= @user.name %>&nbsp;&nbsp;&nbsp;&nbsp;   
+      <%= l @question.updated_at, format: :short %>
       </div>
   </div>
     
@@ -15,6 +16,8 @@
     </div>
   </div>
 </div>
+
+
 
 <h4>回答する</h4>
 <div class="card mb-5">
@@ -33,6 +36,9 @@
   <div class="card mt-3 mb-3">
     <div class="card-footer">
       回答者: <%= answer.name %></br>
+      <div class="text-right">
+        <%= l answer.updated_at, format: :short %>
+      </div>
       <%= markdown(answer.description) %>
     </div>
   </div>

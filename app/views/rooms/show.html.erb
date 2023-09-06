@@ -13,14 +13,23 @@
 <h4>コメントする</h4>
 
 <div class="card mb-5">
-  <div class="card-footer">
-    <%= simple_form_for [@room, @comment] do |f| %>
-      <%= f.input :content, required: false, placeholder: "マークダウンが使用可能です"  %>
-      <div class="text-end">
-        <%= f.button :submit, '送信', class: "btn btn-success" %>
-      </div>
-    <% end %>
-  </div>
+  <% if current_user.present? %>
+    <div class="card-footer">
+      <%= simple_form_for [@room, @comment] do |f| %>
+        <%= f.input :content, required: false, placeholder: "マークダウンが使用可能です"  %>
+        <div class="text-end">
+          <%= f.button :submit, '送信', class: "btn btn-success" %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center mt-1 mb-0">
+      <h4 class="login-message1">🌈メモトーーク！を使ってみよう</h4>
+      <p class="login-message2">今すぐ登録してコメントを残しましょう</p>
+      <p><%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-primary" %></p>
+    </div>
+
+  <% end %>
 </div>
 
 <div>
@@ -29,6 +38,9 @@
       <div class="card-body">
         <%= comment.user_name %> :</br>
         <%= markdown(comment.content) %>
+        <div class="text-end">
+          <%= l comment.created_at, format: :short %>
+        </div>
       </div>
     </div>
   <% end %>
