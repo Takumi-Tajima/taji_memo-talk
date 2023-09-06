@@ -15,7 +15,8 @@
   　    <%= link_to question_path(question), class: "memo_title" do %>
   　      <%= question.title %>
   　      <div class="text-end">
-  　        質問者: <%= question.user.name %> &nbsp;&nbsp;&nbsp;&nbsp;
+  　        質問者: <%= question.user.name %>
+  　        <br>
            <%= l question.created_at, format: :short %>
       　   </div>
   　      <div class="text-muted small text-truncate">
