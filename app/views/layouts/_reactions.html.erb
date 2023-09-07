@@ -1,11 +1,11 @@
 <% if @comment.reacted_by?(current_user) %>
-  <%= link_to comment_reactions_path(@comment), data: { "turbo-method": :delete } do %>
-    いいね済
+  <%= link_to comment_reactions_path(@comment), data: { "turbo-method": :delete }, class: "liked" do %>
+    <i class="fas fa-heart"></i>
     <%= @comment.reactions.count %>
   <% end %>
 <% else %>
-  <%= button_to comment_reactions_path(@comment), data: { "turbo-method": :post } do %>
-    未いいね
+  <%= button_to comment_reactions_path(@comment), data: { "turbo-method": :post }, class: "unliked" do %>
+    <i class="fas fa-heart"></i>
     <%= @comment.reactions.count %>
   <% end %>
 <% end %>
