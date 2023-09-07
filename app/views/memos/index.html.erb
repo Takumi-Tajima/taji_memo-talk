@@ -33,4 +33,10 @@
   <% end %>
 </div>
 
- <%= render "layouts/pagination", obj: @memos%>
+<% unless should_hide_pagination?(@memos) %>
+  <!-- ページ下部に表示されているpaginationを非表示に -->
+  <div class="mt-5">
+    <%= render "layouts/pagination", obj: @memos %>
+  </div>
+<% end %>
+
