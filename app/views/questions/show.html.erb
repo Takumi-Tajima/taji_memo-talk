@@ -1,13 +1,11 @@
 <% content_for(:title, @question.title ) %>
 
-<div class="row">
-  <div class="col-9">
-    <div class="card mt-5 mb-5">
-      <div class="card-header">
-         <%= @question.title %>
-         <div class="text-end">
-          質問者: <%= @user.name %>
-          </div>
+<div class="card mt-5 mb-5">
+  <div class="card-header">
+     <h3><%= @question.title %></h3>
+     <div class="text-end">
+      質問者: <%= @user.name %>&nbsp;&nbsp;&nbsp;&nbsp;   
+      <%= l @question.updated_at, format: :short %>
       </div>
         
       <div class:"card-body">

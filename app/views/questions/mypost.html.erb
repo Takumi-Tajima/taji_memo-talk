@@ -6,12 +6,17 @@
       <%= link_to '質問する', new_question_path, class: "btn btn-primary"%>
   </div>
   
+  <%= render "layouts/pagination", obj: @questions%>
+  
   <% if current_user.questions.present? %>
   　<% current_user.questions.each do |question| %>
   　<div class="card mr-5 ms-5">
       <div class="card-body">
   　    <%= link_to question_path(question), class: "memo_title" do %>
   　      <%= question.title %>
+  　       <div class="text-end">
+          　<%= l question.created_at, format: :short %>
+      　   </div>
   　      <div class="text-muted small text-truncate">
   　        <%= question.description%>
   　      </div>
@@ -27,3 +32,5 @@
     質問をしていません
   <% end %>
 </div>
+
+<%= render "layouts/pagination", obj: @questions%>

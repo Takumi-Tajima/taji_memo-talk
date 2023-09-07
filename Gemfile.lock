@@ -72,6 +72,9 @@ GEM
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
+    bootstrap5-kaminari-views (0.0.1)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     builder (3.2.4)
     carrierwave (3.0.3)
       activemodel (>= 6.0.0)
@@ -117,6 +120,18 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.1.2)
       railties (>= 6.0.0)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     launchy (2.5.2)
       addressable (~> 2.8)
     letter_opener (1.8.1)
@@ -246,6 +261,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  bootstrap5-kaminari-views
   carrierwave
   cssbundling-rails
   debug
@@ -254,6 +270,7 @@ DEPENDENCIES
   dotenv-rails
   jbuilder
   jsbundling-rails
+  kaminari
   letter_opener_web
   mini_magick
   pg (~> 1.1)
