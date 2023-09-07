@@ -49,18 +49,19 @@
   <div class="col-3 mt-5">
     <div class="text-center fs-8 fw-bold mb-2">関連するQiita記事</div>
     <div class="article_scroll">
-      <% if @qiita_error_message.present? %>
-        <%= @qiita_error_message %>
+      <% if @question.qiita_articles.present? %>
+        <ul>
+          <% @question.qiita_articles.each do |qiita_article| %>
+            <div class="qiita_article_link">
+              <li class="p-1 mb-3">
+                <%= link_to qiita_article[:title], qiita_article[:url], target: '_blank' %>
+              </li>
+            </div>
+          <% end %>
+        </ul>
+      <% else %>
+        記事を取得できませんでした
       <% end %>
-      <ul>
-        <% @question.qiita_articles.each do |qiita_article| %>
-          <div class="qiita_article_link">
-            <li class="p-1 mb-3">
-              <%= link_to qiita_article[:title], qiita_article[:url], target: '_blank' %>
-            </li>
-          </div>
-        <% end %>
-      </ul>
     </div>
   </div>
 </div>
