@@ -2,5 +2,6 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 // import * as bootstrap from "bootstrap"
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import '@fortawesome/fontawesome-free/js/all'
 import './copy_button'

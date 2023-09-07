@@ -8,6 +8,8 @@
     <% end %>
   </div>
   
+  <%= render "layouts/pagination", obj: @questions%>
+  
   <% if @questions.present? %>
   　<% @questions.each do |question| %>
   　<div class="card mr-5 ms-5">
@@ -16,6 +18,8 @@
   　      <%= question.title %>
   　      <div class="text-end">
   　        質問者: <%= question.user.name %>
+  　        <br>
+           <%= l question.created_at, format: :short %>
       　   </div>
   　      <div class="text-muted small text-truncate">
   　        <%= question.description%>
@@ -23,8 +27,10 @@
 　     <% end %>
 　     <% if user_signed_in? %>
   　      <div class="d-flex float-end">
-    　      <%= link_to "編集", edit_question_path(question), class: "btn btn-success" %>
-    　      <%= button_to "削除", question_path(question), data: { confirm: "本当に削除しますか?", turbo_confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger"%>
+  　        <% if question.user == current_user %>
+             <%= link_to "編集", edit_question_path(question), class: "btn btn-success" %>
+      　      <%= button_to "削除", question_path(question), data: { confirm: "本当に削除しますか?", turbo_confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger"%>
+      　    <% end %>
 　       </div>
 　     <% end %>
   　   </div>
@@ -34,3 +40,10 @@
     質問は現在ありません
   <% end %>
 </div>
+
+<% unless should_hide_pagination?(@questions) %>
+  <!-- ページ下部に表示されているpaginationを非表示に -->
+  <div class="mt-5">
+    <%= render "layouts/pagination", obj: @questions %>
+  </div>
+<% end %>

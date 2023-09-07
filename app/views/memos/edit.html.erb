@@ -2,5 +2,8 @@
 
 <div class="m-3 mt-5">
   <h2 class="mb-5"><%= @memo.title%></h2>
+  <div class="text-end show_time">
+    更新日時: <%= l @memo.updated_at, format: :short %>
+  </div>
   <%= render 'form', url: memo_path(@memo)%>
 </div>

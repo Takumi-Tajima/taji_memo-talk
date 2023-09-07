@@ -3,21 +3,35 @@
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <%= link_to "メモ一覧", memos_path, class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to memos_path, class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-solid fa-book-open"></i> メモ一覧
+      <% end %>
     </li>
     <li>
-      <%= link_to "メモ新規追加", new_memo_path, class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to new_memo_path, class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-solid fa-circle-plus"></i> メモ新規追加
+      <% end %>
     </li>
     <li>
-      <%= link_to "質問掲示板", questions_path, class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to questions_path, class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-solid fa-file-circle-question"></i> 質問掲示板
+      <% end %>
     </li>
     <li>
-      <%= link_to "自分の質問", mypost_questions_path, class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to mypost_questions_path, class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-solid fa-person-circle-question"></i> 自分の質問
+      <% end %>
     </li>
     <li>
-      <%= link_to "質問する", new_question_path, class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to new_question_path, class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-regular fa-comments"></i> 質問する
+      <% end %>
     </li>
     <hr>
+    <li class="nav-item fw-bold thread_index">
+      <i class="fa-solid fa-rainbow"></i> スレッド一覧
+    </li>
+    <br>
     <div class="scroll">
     <% rooms = Room.all %>
     <% if rooms.present? %>
@@ -45,11 +59,15 @@
     
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
       <li>
-        <%= link_to 'プロフィール', edit_user_registration_path, class:"dropdown-item"%>
+        <%= link_to edit_user_registration_path, class:"dropdown-item" do%>
+          <i class="fa-regular fa-user"></i> プロフィール
+        <% end %>
       </li>
       <li><hr class="dropdown-divider"></li>
       <li>
-        <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class:"dropdown-item"%>
+        <%= button_to destroy_user_session_path, method: :delete, class:"dropdown-item" do %>
+          <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+        <% end %>
       </li>
     </ul>
   </div>

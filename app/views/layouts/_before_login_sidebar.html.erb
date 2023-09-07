@@ -1,12 +1,31 @@
 <div class="d-flex flex-column p-3 text-white bg-dark sidebar__content">
-  <%= link_to "🌈メモトーーク!", new_session_path(resource_name), class: "fs-4 d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"%>
+  <%= link_to "🌈メモトーーク!", new_user_session_path, class: "fs-4 d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"%>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <%= link_to "ログイン", new_session_path(resource_name), class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to new_user_session_path, class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-solid fa-right-to-bracket"></i> ログイン
+      <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to "サインアップ", new_registration_path(resource_name), class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to new_user_registration_path, class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-solid fa-user-plus"></i> サインアップ
+      <% end %>
     </li>
+    <hr>
+    <li class="nav-item fw-bold thread_index">
+      <i class="fa-solid fa-rainbow"></i> スレッド一覧
+    </li>
+    <br>
+    <div class="before_loggin_thred_scroll">
+      <% rooms = Room.all %>
+      <% if rooms.present? %>
+        <% rooms.each do |room| %>
+          <li>
+            <%= link_to room.name, room_path(room), class: "nav-link fw-bold sidebar__link"%>
+          </li>
+        <% end %>
+      <% end %>
+    </div>
   </ul>
 </div>

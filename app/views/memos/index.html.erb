@@ -6,6 +6,8 @@
     <%= link_to 'メモ新規追加', new_memo_path, class: "btn btn-primary"%>
   </div>
   
+  <%= render "layouts/pagination", obj: @memos%>
+  
   <% if @memos.present? %>
   　<% @memos.each do |memo| %>
   　<div class="card mr-5 ms-5">
@@ -21,9 +23,20 @@
     　    <%= button_to "削除", memo_path(memo), data: { confirm: "本当に削除しますか?", turbo_confirm: "本当に削除しますか?" }, method: :delete, class: "btn btn-danger"%>
 　     </div>
   　   </div>
+　     <div class="text-end memo_time">
+        <%= l memo.updated_at, format: :short %>
+      </div>
   　</div>
     <% end %>
   <% else %>
     メモを追加しましょう！
   <% end %>
 </div>
+
+<% unless should_hide_pagination?(@memos) %>
+  <!-- ページ下部に表示されているpaginationを非表示に -->
+  <div class="mt-5">
+    <%= render "layouts/pagination", obj: @memos %>
+  </div>
+<% end %>
+

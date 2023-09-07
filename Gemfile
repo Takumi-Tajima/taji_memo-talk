@@ -24,9 +24,12 @@ gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'dotenv-rails'
 end
 
 group :development do
