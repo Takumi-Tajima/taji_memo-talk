@@ -35,7 +35,11 @@
     <% @question.answers.each do |answer| %>
       <div class="card mt-3 mb-3">
         <div class="card-footer">
-          回答者: <%= answer.name %></br>
+          <% if answer.name.present? %>
+            回答者: <%= answer.name %></br>
+          <% else %>
+            回答者: 匿名さん</br>
+          <% end %>
           <%= markdown(answer.description) %>
         </div>
       </div>
