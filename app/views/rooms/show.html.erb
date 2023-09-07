@@ -38,12 +38,18 @@
         <%= comment.user_name %> :</br>
         <%= markdown(comment.content) %>
       </div>
-      <div class="d-flex justify-content-between">
-        <%= render "layouts/reactions" %>
-        <div class="p-2">
+      <% if user_signed_in? %>
+        <div class="d-flex justify-content-between">
+          <%= render "layouts/reactions" %>
+          <div class="p-2">
+            <%= l comment.created_at, format: :short %>
+          </div>
+        </div>
+      <% else %>
+        <div class="text-end">
           <%= l comment.created_at, format: :short %>
         </div>
-      </div>
+      <% end %>
     </div>
   <% end %>
 </div>
