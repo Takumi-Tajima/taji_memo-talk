@@ -12,4 +12,6 @@ module ApplicationHelper
   def should_hide_pagination?(obj)
     obj.total_pages > 1 && obj.count < 5
   end
+  
+  
 end
