@@ -21,12 +21,12 @@ class Question < ApplicationRecord
     api_token = ENV['QIITA_API_TOKEN']
 
     uri = URI(qiita_api_endpoint)
-    params = { 'q' => query }
+    params = { 'query' => query }
     uri.query = URI.encode_www_form(params)
   
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
-  
+
     request = Net::HTTP::Get.new(uri.request_uri)
     request['Authorization'] = "Bearer #{api_token}"
   
