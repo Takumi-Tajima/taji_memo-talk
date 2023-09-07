@@ -35,7 +35,7 @@ class Question < ApplicationRecord
     if response.is_a?(Net::HTTPSuccess)
       JSON.parse(response.body)
     else
-      []
+      @qiita_error_message = "データを取得できませんでした"
     end
   end
 
