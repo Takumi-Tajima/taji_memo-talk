@@ -41,4 +41,9 @@
   <% end %>
 </div>
 
-<%= render "layouts/pagination", obj: @questions%>
+<% unless should_hide_pagination?(@questions) %>
+  <!-- ページ下部に表示されているpaginationを非表示に -->
+  <div class="mt-5">
+    <%= render "layouts/pagination", obj: @questions %>
+  </div>
+<% end %>
