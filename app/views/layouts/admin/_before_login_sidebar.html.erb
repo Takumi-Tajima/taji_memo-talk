@@ -3,7 +3,9 @@
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <%= link_to "ログイン", new_session_path(resource_name), class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to new_session_path(resource_name), class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-solid fa-right-to-bracket"></i> ログイン
+      <% end %>
     </li>
   </ul>
 </div>

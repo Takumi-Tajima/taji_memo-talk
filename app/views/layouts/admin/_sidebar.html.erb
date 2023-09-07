@@ -3,14 +3,18 @@
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <%= link_to "スレッド一覧", admins_rooms_path, class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to admins_rooms_path, class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-brands fa-buromobelexperte"></i> スレッド一覧
+      <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to "アカウント一覧", admins_users_path, class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to admins_users_path, class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-solid fa-people-line"></i> アカウント一覧
+      <% end %>
     </li>
   </ul>
   <hr>
-  <div class="dropdown">
+  <div class="dropdown admin__sidebar-dropdown">
     
     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
       <strong><%= current_admin.email %></strong>
@@ -18,11 +22,15 @@
     
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
       <li>
-        <%= link_to '設定', edit_admin_registration_path, class:"dropdown-item"%>
+        <%= link_to edit_admin_registration_path, class:"dropdown-item" do %>
+          <i class="fa-regular fa-user"></i> 設定
+        <% end %>
       </li>
       <li><hr class="dropdown-divider"></li>
       <li>
-        <%= button_to 'ログアウト', destroy_admin_session_path, method: :delete, class:"dropdown-item"%>
+        <%= button_to destroy_admin_session_path, method: :delete, class:"dropdown-item" do %>
+          <i class="fa-solid fa-right-from-bracket"></i> ログアウト
+        <% end %>
       </li>
     </ul>
   </div>
