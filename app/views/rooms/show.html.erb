@@ -31,9 +31,9 @@
 
   <% end %>
 </div>
-
 <div>
   <% @room.comments.each do |comment| %>
+    <% @comment = comment %>
     <div class="card mt-3 mb-3">
       <div class="card-body">
         <%= comment.user_name %> :</br>
@@ -42,6 +42,7 @@
           <%= l comment.created_at, format: :short %>
         </div>
       </div>
+      <%= render "layouts/reactions" %>
     </div>
   <% end %>
 </div>
