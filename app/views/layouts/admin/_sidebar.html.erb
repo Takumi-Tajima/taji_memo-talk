@@ -8,7 +8,9 @@
       <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to "アカウント一覧", admins_users_path, class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to admins_users_path, class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-solid fa-people-line"></i> アカウント一覧
+      <% end %>
     </li>
   </ul>
   <hr>
