@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'reactions/create'
-  get 'reactions/destroy'
-
+  
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     registrations: 'admins/registrations',
