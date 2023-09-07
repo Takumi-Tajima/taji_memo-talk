@@ -38,11 +38,14 @@
       <div class="card-body">
         <%= comment.user_name %> :</br>
         <%= markdown(comment.content) %>
-        <div class="text-end">
-          <%= l comment.created_at, format: :short %>
-        </div>
       </div>
-      <%= render "layouts/reactions" %>
+        <div class="d-flex justify-content-between">
+          <%= render "layouts/reactions" %>
+          <div class="p-2">
+            <%= l comment.created_at, format: :short %>
+          </div>
+        </div>
+        
     </div>
   <% end %>
 </div>
