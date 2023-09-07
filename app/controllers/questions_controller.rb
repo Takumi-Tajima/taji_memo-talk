@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def mypost
-	  @questions = current_user.questions.all.page(params[:page])
+	  @questions = current_user.questions.default_order.page(params[:page])
   end
   
   def new
@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
   def show
     @user = User.find(@question.user_id)
     @answer = Answer.new
+    @question.search_qiita_and_associate
   end
   
   def create

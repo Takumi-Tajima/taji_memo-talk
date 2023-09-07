@@ -3,25 +3,29 @@
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <%= link_to "ログイン", new_user_session_path, class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to new_user_session_path, class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-solid fa-right-to-bracket"></i> ログイン
+      <% end %>
     </li>
     <li class="nav-item">
-      <%= link_to "サインアップ", new_user_registration_path, class: "nav-link fw-bold sidebar__link"%>
+      <%= link_to new_user_registration_path, class: "nav-link fw-bold sidebar__link" do %>
+        <i class="fa-solid fa-user-plus"></i> サインアップ
+      <% end %>
     </li>
-    <br><hr>
+    <hr>
     <li class="nav-item fw-bold thread_index">
-      スレッド一覧
+      <i class="fa-solid fa-rainbow"></i> スレッド一覧
     </li>
     <br>
-    <div class="scroll">
-    <% rooms = Room.all %>
-    <% if rooms.present? %>
-      <% rooms.each do |room| %>
-        <li>
-          <%= link_to room.name, room_path(room), class: "nav-link fw-bold sidebar__link"%>
-        </li>
+    <div class="before_loggin_thred_scroll">
+      <% rooms = Room.all %>
+      <% if rooms.present? %>
+        <% rooms.each do |room| %>
+          <li>
+            <%= link_to room.name, room_path(room), class: "nav-link fw-bold sidebar__link"%>
+          </li>
+        <% end %>
       <% end %>
-    <% end %>
     </div>
   </ul>
 </div>
