@@ -1,5 +1,4 @@
 class ReactionsController < ApplicationController
-  # before_action :set_room
   before_action :set_comment
 
   def create 
@@ -19,9 +18,5 @@ private
   def set_comment
    @comment = Comment.find(params[:comment_id])
   end
-  
-  # def set_room
-  # @room = Room.find(params[:comment_id])
-  # end	
   
 end
