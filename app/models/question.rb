@@ -2,11 +2,15 @@ class Question < ApplicationRecord
   belongs_to :user
   has_many :answers, dependent: :destroy
   
+  BAD_WORDS = ["死ね", "クソ", "馬鹿", "バカ", "しね", "あほ", "アホ", "キモい", "キモ"].freeze
+  
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, presence: true
   
-  scope :default_order, -> { order(created_at: :desc) }
+  before_save :filter_bad_words
   
+  scope :default_order, -> { order(created_at: :desc) }
+
   attr_accessor :qiita_articles
   
   def search_qiita_and_associate
@@ -52,5 +56,23 @@ class Question < ApplicationRecord
     end
   
     self.qiita_articles = qiita_articles
+  end
+  
+  def filter_bad_words
+    if title.present?
+      
+      BAD_WORDS.each do |word|
+        title.gsub!(word, '😀' * word.length) if title.include?(word)
+      end
+    end
+
+    if description.present?
+      words = description.split(' ')
+      words.map! do |word|
+        BAD_WORDS.include?(word) ? '😀' * word.length : word
+      end
+
+      self.description = words.join(' ')
+    end
   end
 end
