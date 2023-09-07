@@ -7,39 +7,53 @@
       質問者: <%= @user.name %>&nbsp;&nbsp;&nbsp;&nbsp;   
       <%= l @question.updated_at, format: :short %>
       </div>
-  </div>
-    
-  <div class:"card-body">
-    <div class="p-3">
-      質問内容: </br>
-      <%= markdown(@question.description) %>
+        
+      <div class:"card-body">
+        <div class="p-3">
+          質問内容: </br>
+          <%= markdown(@question.description) %>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-
-
-<h4>回答する</h4>
-<div class="card mb-5">
-  <div class="card-body">
-    <%= simple_form_for [@question, @answer] do |f| %>
-      <%= f.input :name, placeholder: "匿名さん" %>
-      <%= f.input :description, required: false, placeholder: "マークダウンが使用可能です"  %>
-      <div class="text-end">
-        <%= f.button :submit, '回答する', class: "btn btn-success" %>
+    
+    <h4>回答する</h4>
+    <div class="card mb-5">
+      <div class="card-body">
+        <%= simple_form_for [@question, @answer] do |f| %>
+          <%= f.input :name, placeholder: "匿名さん" %>
+          <%= f.input :description, required: false, placeholder: "マークダウンが使用可能です"  %>
+          <div class="text-end">
+            <%= f.button :submit, '回答する', class: "btn btn-success" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    
+    <% @question.answers.each do |answer| %>
+      <div class="card mt-3 mb-3">
+        <div class="card-footer">
+          回答者: <%= answer.name %></br>
+          <%= markdown(answer.description) %>
+        </div>
       </div>
     <% end %>
   </div>
-</div>
 
-<% @question.answers.each do |answer| %>
-  <div class="card mt-3 mb-3">
-    <div class="card-footer">
-      回答者: <%= answer.name %></br>
-      <div class="text-right">
-        <%= l answer.updated_at, format: :short %>
+<div class="col-3 mt-5">
+  <div class="text-center fs-8 fw-bold mb-2">関連するQiita記事</div>
+  <div class="article_scroll">
+    <% if @qiita_error_message.present? %>
+        <%= @qiita_error_message %>
       </div>
-      <%= markdown(answer.description) %>
-    </div>
+    <% end %>
+    <ul>
+      <% @question.qiita_articles.each do |qiita_article| %>
+        <div class="qiita_article_link">
+          <li class="p-1 mb-3">
+            <%= link_to qiita_article[:title], qiita_article[:url], target: '_blank' %>
+          </li>
+        </div>
+      <% end %>
+    </ul>
   </div>
-<% end %>
+</div>
