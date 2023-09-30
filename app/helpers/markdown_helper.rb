@@ -18,7 +18,7 @@ module MarkdownHelper
       tables: true,
       autolink: true,
       lax_spacing: true,
-      
+
       lax_html_blocks: true,
       footnotes: true,
       space_after_headers: true,

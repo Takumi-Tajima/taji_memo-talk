@@ -2,14 +2,11 @@
 <html>
   <head>
     <title><%= page_title(yield(:title)) %></title>
-    <!--
-    ブラウザ上部に表示するタイトルアイコンの設定
-    <link href="/assets/xxx.png" rel="icon" type="image/x-icon" />
-    -->
+
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
@@ -22,7 +19,7 @@
         <div class="col-3">
           <%= render "layouts/sidebar"%>
         </div>
-         <div class="col-8">
+        <div class="col-8">
           <%= yield %>
         </div>
       </div>
@@ -31,7 +28,7 @@
         <div class="col-3">
           <%= render "layouts/before_login_sidebar"%>
         </div>
-         <div class="col-8">
+        <div class="col-8">
           <%= yield %>
         </div>
       </div>
