@@ -1,13 +1,13 @@
 class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_question, only: %i[show edit update destroy]
-  before_action :authenticate_question_user!, only: %i[edit]
+  before_action :set_question, only: %i[edit update destroy]
+  before_action :authenticate_question_user!, only: %i[edit destroy]
 
   def index
     @questions = Question.default_order.page(params[:page])
   end
 
-  def mypost
+  def myquestions
     @questions = current_user.questions.default_order.page(params[:page])
   end
 
@@ -16,6 +16,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @question = Question.find(params[:id])
     @user = User.find(@question.user_id)
     @answer = Answer.new
     @question.search_qiita_and_associate
@@ -54,7 +55,7 @@ class QuestionsController < ApplicationController
   private
 
     def set_question
-      @question = Question.find(params[:id])
+      @question = current_user.question.find(params[:id])
     end
 
     def question_params

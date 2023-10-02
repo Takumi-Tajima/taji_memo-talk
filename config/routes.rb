@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :questions do
     resources :answers, only: %i[create]
     collection do
-      get "mypost"
+      get "myquestions"
     end
   end
 
@@ -25,16 +25,16 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create]
   end
 
-  namespace :admins do
-    resources :rooms, only: %i[index new edit create update destroy]
-    resources :users, only: %i[index edit update destroy]
-  end
-
   resources :comments do
     resource :reactions, only: %i[create destroy]
   end
 
   root "memos#index"
+
+  namespace :admins do
+    resources :rooms, only: %i[index new edit create update destroy]
+    resources :users, only: %i[index edit update destroy]
+  end
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end

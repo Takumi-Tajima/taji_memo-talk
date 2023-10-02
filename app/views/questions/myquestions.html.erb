@@ -5,9 +5,9 @@
   <div class="text-end">
       <%= link_to '質問する', new_question_path, class: "btn btn-primary"%>
   </div>
-  
+
   <%= render "layouts/pagination", obj: @questions%>
-  
+
   <% if current_user.questions.present? %>
   　<% current_user.questions.each do |question| %>
   　<div class="card mr-5 ms-5">

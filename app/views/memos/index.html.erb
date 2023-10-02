@@ -34,7 +34,7 @@
 </div>
 
 <% unless should_hide_pagination?(@memos) %>
-  <!-- ページ下部に表示されているpaginationを非表示に -->
+  <!-- メモの件数が少ない場合、下部にもページネーションが登場して不恰好になってしまう。そのため件数が少ない場合には下部のページネーションは非表示にする。 -->
   <div class="mt-5">
     <%= render "layouts/pagination", obj: @memos %>
   </div>
