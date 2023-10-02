@@ -10,6 +10,9 @@ gem "devise"
 gem "dockerfile-rails", ">= 1.5", :group => :development
 gem "jbuilder"
 gem "jsbundling-rails"
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
+gem 'letter_opener_web'
 gem 'mini_magick'
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
@@ -24,8 +27,6 @@ gem "sprockets-rails"
 gem "stimulus-rails"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
-gem 'kaminari'
-gem 'bootstrap5-kaminari-views'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -34,5 +35,4 @@ end
 
 group :development do
   gem "web-console"
-  gem 'letter_opener_web'
 end
