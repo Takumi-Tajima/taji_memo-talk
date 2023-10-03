@@ -9,14 +9,14 @@ class Question < ApplicationRecord
   attr_accessor :qiita_articles
 
   def search_qiita_and_associate
-    qiita_search_results = search_qiita(self.title)
+    qiita_search_results = search_qiita(title)
     associate_qiita_results(qiita_search_results)
   end
 
   private
 
   def search_qiita(query)
-    qiita_api_endpoint = "https://qiita.com/api/v2/items"
+    qiita_api_endpoint = 'https://qiita.com/api/v2/items'
     api_token = ENV['QIITA_API_TOKEN']
     uri = URI(qiita_api_endpoint)
     params = { 'query' => query }
@@ -38,7 +38,7 @@ class Question < ApplicationRecord
     qiita_results.each do |qiita_result|
       qiita_article = {
         title: qiita_result['title'],
-        url: qiita_result['url'],
+        url: qiita_result['url']
       }
       qiita_articles << qiita_article
     end

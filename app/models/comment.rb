@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
   belongs_to :room
   has_many :reactions, dependent: :destroy
   before_save :set_filtered_bad_comment
-  validates :content, presence: true, length: {maximum: 200}
+  validates :content, presence: true, length: { maximum: 200 }
 
   def user_name
     user.name

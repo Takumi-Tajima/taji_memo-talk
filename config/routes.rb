@@ -1,21 +1,20 @@
 Rails.application.routes.draw do
-
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     registrations: 'admins/registrations',
-    passwords:'admins/passwords'
+    passwords: 'admins/passwords'
   }
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
-    passwords:'users/passwords'
+    passwords: 'users/passwords'
   }
 
   resources :questions do
     resources :answers, only: %i[create]
     collection do
-      get "myquestions"
+      get 'myquestions'
     end
   end
 
@@ -29,12 +28,12 @@ Rails.application.routes.draw do
     resource :reactions, only: %i[create destroy]
   end
 
-  root "memos#index"
+  root 'memos#index'
 
   namespace :admins do
     resources :rooms, only: %i[index new edit create update destroy]
     resources :users, only: %i[index edit update destroy]
   end
 
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

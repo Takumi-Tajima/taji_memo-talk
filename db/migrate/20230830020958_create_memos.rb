@@ -4,7 +4,7 @@ class CreateMemos < ActiveRecord::Migration[7.0]
       t.references :user, null: false, foreign_key: true
       t.string :title, null: false
       t.text :description
-      
+
       t.timestamps
     end
   end

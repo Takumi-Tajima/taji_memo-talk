@@ -1,5 +1,4 @@
 class CustomRenderHTML < Redcarpet::Render::HTML
-
 end
 
 module MarkdownHelper

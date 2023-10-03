@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails"
+require 'rails'
 
 require_relative 'boot'
 require 'rails/all'
@@ -26,7 +26,6 @@ module MemoTalk
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
 
     # 日本語化設定
     config.time_zone = 'Tokyo'

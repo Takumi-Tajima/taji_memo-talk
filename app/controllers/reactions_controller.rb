@@ -13,10 +13,9 @@ class ReactionsController < ApplicationController
     redirect_back(fallback_location: root_path) # 同様にredirect_backを使用
   end
 
-private
+  private
 
   def set_comment
     @comment = Comment.find(params[:comment_id])
   end
-
 end
