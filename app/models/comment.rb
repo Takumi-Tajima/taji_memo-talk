@@ -1,11 +1,9 @@
 class Comment < ApplicationRecord
+  include BadWordsFilter
   belongs_to :user
   belongs_to :room
   has_many :reactions, dependent: :destroy
-
-  BAD_WORDS = ["死ね", "クソ", "馬鹿", "バカ", "しね", "あほ", "アホ", "キモい", "キモ"].freeze
-  before_save :filter_bad_words
-
+  before_save :set_filtered_bad_comment
   validates :content, presence: true, length: {maximum: 200}
 
   def user_name
@@ -18,12 +16,7 @@ class Comment < ApplicationRecord
 
   private
 
-  def filter_bad_words
-    words = content.split(' ')
-    words.map! do |word|
-      BAD_WORDS.include?(word) ? '😀' * word.length : word
-    end
-
-    self.content = words.join(' ')
+  def set_filtered_bad_commment
+    self.content = filter_bad_words(content)
   end
 end

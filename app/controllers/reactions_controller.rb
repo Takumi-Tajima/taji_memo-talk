@@ -1,7 +1,7 @@
 class ReactionsController < ApplicationController
   before_action :set_comment
 
-  def create 
+  def create
     @reaction = current_user.reactions.new(comment_id: @comment.id)
     @reaction.save
     redirect_back(fallback_location: root_path) # コメントの詳細ページにリダイレクトする場合、room_path(@room)ではなくredirect_backを使用
@@ -16,7 +16,7 @@ class ReactionsController < ApplicationController
 private
 
   def set_comment
-   @comment = Comment.find(params[:comment_id])
+    @comment = Comment.find(params[:comment_id])
   end
-  
+
 end

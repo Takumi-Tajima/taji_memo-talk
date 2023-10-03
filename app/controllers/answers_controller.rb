@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[create]
-  
+
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
@@ -12,7 +12,7 @@ class AnswersController < ApplicationController
       render "questions/show", status: :unprocessable_entity
     end
   end
-  
+
   private
 
   def answer_params
